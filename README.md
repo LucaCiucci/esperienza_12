@@ -2,9 +2,9 @@
 Programma di analisi dati per l'esperienza del pendolo forzato. Solo per mostrare il codice principale. End Date: 31/12/2019  
 
 Gruppo:
-- Serena Bruzzesi  
+- Serena Bruzzesi github/Serenal1999  
 - Sara Bougrine  
-- Luca Ciucci  
+- Luca Ciucci @github/LucaCiucci
 
 ## Utilizzo
 eseguendo il programma esso scorrerà i files indicati in settings.h e creerà i file di output.
@@ -25,5 +25,5 @@ gli altri file python sono per creare i grafici.
 So che fa schifo ma è stato fatto di fretta.  
 Il codice da solo non funziona, (contatta develop@lucaciucci99.com per progetto codice completo)
 ## TODO
-da aggiornare i .txt e i .py, il codice va fatto il reupload  
-carica i file di Serena
+- [ ] da aggiornare i .txt e i .py, il codice va fatto il reupload  
+- [ ] carica i file di Serena
