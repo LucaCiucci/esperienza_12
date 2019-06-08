@@ -1,5 +1,10 @@
 # esperienza_12
-Programma di analisi dati per l'esperienza del pendolo forzato. Solo per mostrare il codice principale. End Date: 31/12/2019
+Programma di analisi dati per l'esperienza del pendolo forzato. Solo per mostrare il codice principale. End Date: 31/12/2019  
+
+Gruppo:
+- Serena Bruzzesi  
+- Sara Bougrine  
+- Luca Ciucci  
 
 ## Utilizzo
 eseguendo il programma esso scorrerà i files indicati in settings.h e creerà i file di output.
