@@ -15,3 +15,6 @@ dopo il messaggio
 chiudendo le finestre il programma termina.
 
 gli altri file python sono per creare i grafici.
+
+## Note
+So che il codice fa schifo ma è stato fatto di fretta
