@@ -19,4 +19,4 @@ gli altri file python sono per creare i grafici.
 ## Note
 So che fa schifo ma è stato fatto di fretta.  
 da aggiornare i .txt e i .py, il codice va fatto il reupload  
-+ carica i file di serena
+carica i file di serena
