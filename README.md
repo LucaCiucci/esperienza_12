@@ -21,3 +21,4 @@ Gli altri file python sono per creare i grafici.
 ## Note
 So che fa schifo ma è stato fatto di fretta.  
 Il codice da solo non funziona, (contatta develop@lucaciucci99.com per progetto completo)
+Utilizza [SFML](https://www.sfml-dev.org/) per semplicità
