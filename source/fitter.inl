@@ -3,7 +3,9 @@
 /*
 =======================================
 |	General		C++						|
-|	Author:		Luca Ciucci				|
+|	Authors:	Luca Ciucci				|
+|				Sara Bougrine			|
+|				Serena Bruzzesi			|
 |	Version:	0						|
 |	Date:		x / x / 2019			|
 |	e-mail:		develop@lucaciucci99.com|

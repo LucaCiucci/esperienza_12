@@ -12,12 +12,14 @@ import math
 
 
 #s, x = pylab.loadtxt('dft_data.txt', unpack = True)
-s, x = pylab.loadtxt('dft_data_10s_001.txt', unpack = True)
+#s, x = pylab.loadtxt('dft_data_10s_001.txt', unpack = True)
+s, x = pylab.loadtxt('dft_data_10s_0.5ov_002.txt', unpack = True)
 
-gridsize = (3, 1)
+#gridsize = (3, 1)
+gridsize = (2, 1)
 
 ax1 = pylab.subplot2grid(gridsize,(0,0),colspan = 1, rowspan = 2)
-ax1.set_title("grafico")
+#ax1.set_title("grafico")
 ax1.set_xlabel("t [s]")
 ax1.set_ylabel("x [u.a.]")
 ax1.grid(color = "gray")
@@ -28,16 +30,20 @@ ax1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
 ax1.errorbar(s, x, 0, 0, color = "black", fmt = '.', label='Data')
 
 def fit_function(w, F0, w0, gamma):
+    #gamma = 0.01515
     return F0/pylab.sqrt((w0**2 - w**2)**2 + 4.0 * (gamma**2) * (w**2))
 def fit_function_ODR(pars, w):
+    #pars[2] = 0.01515
     return pars[0]/pylab.sqrt((pars[1]**2 - w**2)**2 + 4.0 * (pars[2]**2) * (w**2))
+
+
 
 
 
 # Run the actual ODR.
 model = odrpack.Model(fit_function_ODR)
 data = odrpack.RealData(s, x)
-odr = odrpack.ODR(data, model, beta0=(55.0, 4.68, 0.07))
+odr = odrpack.ODR(data, model, beta0=(53.7, 4.7, 0.064))
 out = odr.run()
 popt, pcov = out.beta, out.cov_beta
 F0, w0, gamma = popt
@@ -55,6 +61,11 @@ dF0, dw0, dgamma = numpy.sqrt(pcov.diagonal())
 chisq = out.sum_square
 # !Run the actual ODR.
 
+if (True): # set False per usare ODR
+    init = numpy.array([53.7, 4.7, 0.064]) #variare i parametri iniziali per ottenere diverse omega.
+    popt, pcov = curve_fit(fit_function, s, x, init) #aggiungere l'errore
+    F0, w0, gamma = popt
+    dF0, dw0, dgamma = pylab.sqrt(pcov.diagonal())
 
 print('F0 = %f +- %f' %(F0, dF0))
 print('w0 = %f +- %f' %(w0, dw0))
@@ -69,7 +80,7 @@ for i in range(len(bucket)):
         bucket[i]=float(i)*inc + s.min()
         retta[i] = fit_function(bucket[i], F0, w0, gamma)
 
-ax1.plot(bucket, retta, color = "red", linestyle="--", label = "Fit con retta")
+ax1.plot(bucket, retta, color = "red", linestyle="--", label = "Fit")
 
 #------------------------------------------------------------
 
@@ -79,16 +90,16 @@ ax1.plot(bucket, retta, color = "red", linestyle="--", label = "Fit con retta")
 #---------------------------------------------------------------
 ax1.legend = pylab.legend(loc='upper left', shadow=True, fontsize='medium')
 
-ax2 = pylab.subplot2grid(gridsize,(2,0), colspan = 2)
-ax2.set_xlabel("1/p [1/m]")
-ax2.set_ylabel("Residui [1/m]")
-ax2.grid(color = "gray")
-ax2.grid(b=True, which='major', color='#666666', linestyle='-')
-ax2.minorticks_on()
-ax2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
+#ax2 = pylab.subplot2grid(gridsize,(2,0), colspan = 2)
+#ax2.set_xlabel("1/p [1/m]")
+#ax2.set_ylabel("Residui [1/m]")
+#ax2.grid(color = "gray")
+#ax2.grid(b=True, which='major', color='#666666', linestyle='-')
+#ax2.minorticks_on()
+#ax2.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
 
-ax2.errorbar(s, x - fit_function(s, F0, w0, gamma), 0, 0, color = "black", fmt = '.', label='residui (fit retta)')
-ax2.plot(pylab.array([s.min(), s.max()]),pylab.array([0 , 0]),color = "red", linestyle="--", label = "zero")
-ax1.legend = pylab.legend(loc='upper left', shadow=True, fontsize='medium')
+#ax2.errorbar(s, x - fit_function(s, F0, w0, gamma), 0, 0, color = "black", fmt = '.', label='residui (fit retta)')
+#ax2.plot(pylab.array([s.min(), s.max()]),pylab.array([0 , 0]),color = "red", linestyle="--", label = "zero")
+#ax1.legend = pylab.legend(loc='upper left', shadow=True, fontsize='medium')
 
 pylab.show()

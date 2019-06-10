@@ -8,11 +8,11 @@ import math
 
 
 
-number = '45_1.txt'
+number = '65_1.txt'
 
 #s, x = pylab.loadtxt('../../dati/45_1.txt', unpack = True) # schifo sulle creste
 #s, x = pylab.loadtxt('../../dati/60_1.txt', unpack = True) # cambio velocità, dft interessante
-#s, x = pylab.loadtxt('../../dati/65_1.txt', unpack = True) # il MIGLIOR esempio,ft interessante con picchi multipli
+#s, x = pylab.loadtxt('../../dati/65_1.txt', unpack = True) # il miglior esempio, fft interessante con picchi multipli
 #s, x = pylab.loadtxt('../../dati/70_1.txt', unpack = True) # la velocità aumenta
 #s, x = pylab.loadtxt('../../dati/71_1.txt', unpack = True) # la velocità supera il picco DFT interessante (forse)
 #s, x = pylab.loadtxt('../../dati/72_1.txt', unpack = True) # interferenza fra oscillazione a w e w0, dft interessante
@@ -33,26 +33,6 @@ ax1.minorticks_on()
 ax1.grid(b=True, which='minor', color='#999999', linestyle='-', alpha=0.2)
 
 ax1.errorbar(s, x, 1.0, 0.001, color = "black", fmt = '.', label='Data')
-
-def fit_function(w, F0, w0, gamma):
-    return F0/pylab.sqrt((w0**2 - w**2)**2 + 4.0 * (gamma**2) * (w**2))
-def fit_function_ODR(pars, w):
-    return pars[0]/pylab.sqrt((pars[1]**2 - w**2)**2 + 4.0 * (pars[2]**2) * (w**2))
-
-
-F0 = 70
-w0 = 4.7
-gamma = 0.1
-
-div = 100000
-bucket = numpy.array([0.0 for i in range(div)])
-retta = numpy.array([0.0 for i in range(div)])
-inc = (s.max() - s.min())/div 
-for i in range(len(bucket)):
-        bucket[i]=float(i)*inc + s.min()
-        retta[i] = fit_function(bucket[i], F0, w0, gamma)
-
-#ax1.plot(bucket, retta, color = "red", linestyle="--", label = "funzione???")
 
 
 #---------------------------------------------------------------

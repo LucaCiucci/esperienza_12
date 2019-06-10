@@ -1,14 +1,15 @@
 /*
 =======================================
 |	General		C++						|
-|	Author:		Luca Ciucci				|
+|	Authors:	Luca Ciucci				|
+|				Sara Bougrine			|
+|				Serena Bruzzesi			|
 |	Version:	0						|
 |	Date:		x / x / 2019			|
 |	e-mail:		develop@lucaciucci99.com|
 |	licese:		license.md				|
 =======================================
 */
-
 
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -39,7 +40,7 @@ int main(int argc, char** argv)
 #if false
 		fitter.save_dft(std::string("dft_new/") + files[i], 0, 10);
 #endif
-		lc::math::FunctionOptimizator<> fo(chi2);
+		lc::math::FunctionOptimizer<> fo(chi2);
 		fo.params[0] = 57.1999;
 		fo.params[1] = 4.69884;
 		fo.params[2] = 0.0665163;
@@ -48,7 +49,7 @@ int main(int argc, char** argv)
 		fitter.go();
 	}
 	window_dft.clear();
-	lc::math::FunctionOptimizator<> fo(chi2);
+	lc::math::FunctionOptimizer<> fo(chi2);
 	fo.params[0] = 70;
 	fo.params[1] = 4.7;
 	fo.params[2] = 0.1;
@@ -153,7 +154,7 @@ int main_OLD(int argc, char** argv)
 		fitter.plot_dft(0, 10000);
 		fitter.go();
 	}
-	lc::math::FunctionOptimizator<> fo(chi2);
+	lc::math::FunctionOptimizer<> fo(chi2);
 	fo.params[0] = 70;
 	fo.params[1] = 4.7;
 	fo.params[2] = 0.1;
@@ -191,7 +192,7 @@ int main_OLD(int argc, char** argv)
 	out_file.close();
 
 
-	lc::math::FunctionOptimizator<> fo2(chi2);
+	lc::math::FunctionOptimizer<> fo2(chi2);
 	//fo2.oneStep(0.0005, 1000);
 
 	plot_f(0.0, 0.0, 0.0);
